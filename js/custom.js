@@ -16,6 +16,13 @@ function signUp() {
             } else {
                 window.alert("Connection failed");
             }
+        } else {
+            var connection = initUserConnection();
+            if(connection.API.name === 'user') {
+                var result = createUser(form.fName.value, form.lName.value, form.email.value, form.pswd.value, form.sn.value, form.unit.value, form.city.value, form.state.value, form.zipCode.value);
+            } else {
+                window.alert("Connection failed");
+            }
         }
     }else{
         console.log("invalid form");
