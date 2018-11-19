@@ -16,11 +16,13 @@ function initDoctorConnection() {
 function createDoctor(fname, lname, email, password, license, street, unit, city, state, zipcode) {
   Coursetro.setDoctor(web3.eth.defaultAccount, fname, lname, email, password, license, street, unit, city, state, zipcode, function(err, res) {
       if (err) {
+        console.log(err);
         return JSON.parse('{"error":"'+err+'"}');
       }
       if (res) {
 
         msg = "Success";
+        console.log(msg);
         return JSON.parse('{"data":{"success":true}}');
       }
     });

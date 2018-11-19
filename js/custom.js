@@ -1,45 +1,44 @@
 var isDoctor=false;
-    var msg='';
-    function signUp() {
-        var form = document.signupForm;
-        validateSignUpForm(form);
-        
+var msg='';
+//1px solid #ccc;
+function signUp() {
+    var form = document.signupForm;
+    form.pswd.style.border= "1px solid #ccc";
+        form.pswd2.style.border= "1px solid #ccc";
+    var valid = validateSignUpForm(form);
+    if(valid){
+        console.log("valid form");
         if(isDoctor) {
             var connection = initDoctorConnection();
             if(connection.API.name === 'doctor') {
-                console.log(form.fName.value);
-                console.log(form.lName.value);
-                console.log(form.email.value);
-                console.log(form.pswd.value);
-                console.log(form.doctorlic.value);
-                console.log(form.sn.value);
-                console.log(form.unit.value);
-                console.log(form.city.value);
-                console.log(form.state.value);
-                console.log(form.zipCode.value);
                 var result = createDoctor(form.fName.value, form.lName.value, form.email.value, form.pswd.value, form.doctorlic.value, form.sn.value, form.unit.value, form.city.value, form.state.value, form.zipCode.value);
-                
-                console.log(msg);
-                
-                // while(true) {
-                //     if(typeof result === 'undefined'){
-                    
-                //     }else{
-                //         if(result.data && result.data.success) {
-                //             window.alert("Doctor Registered");
-                //         } else {
-                //             window.alert("Problem in registration");
-                //         }
-                //         break;
-                //     }
-                // }
-
-
+                // console.log(msg);
             } else {
                 window.alert("Connection failed");
             }
         }
+    }else{
+        console.log("invalid form");
     }
-    function validateSignUpForm(ele){
-        //var element = 
+
+}
+
+function validateSignUpForm(ele){
+
+    var elements = ele.getElementsByTagName("input");
+    var vflag=true;
+    for(var i=0; i<elements.length; i++)
+    {
+        if(elements[i].value==''){
+            return false;
+        }
     }
+    if(ele.pswd.value!=ele.pswd2.value){
+        
+        ele.pswd.style.border= "1px solid red";
+        ele.pswd2.style.border= "1px solid red";
+        alert("password should match");
+        return false;
+    }
+    return true;
+}
