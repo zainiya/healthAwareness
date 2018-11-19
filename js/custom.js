@@ -1,8 +1,9 @@
 var isDoctor=false;
     var msg='';
     function signUp() {
-        validateForm();
         var form = document.signupForm;
+        validateSignUpForm(form);
+        
         if(isDoctor) {
             var connection = initDoctorConnection();
             if(connection.API.name === 'doctor') {
@@ -39,6 +40,6 @@ var isDoctor=false;
             }
         }
     }
-    function validateForm(){
-        
+    function validateSignUpForm(ele){
+        //var element = 
     }
