@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>PHA Alert</title>
+
+    
+    <link rel="stylesheet" type="text/css" href="fontawesome-free-5.5.0-web/css/all.css">
+
+    <!--<script src="./node_modules/web3/dist/web3.min.js"></script>-->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <h2 style="padding: 10px; margin-bottom: 30px;">Public Health Awareness System</h2>
+            <nav class="navbar navbar-default" id="navbar">
+              <div class="container-fluid">
+                <!--<div class="navbar-header">
+                  <a class="navbar-brand" href="#">Public Health Awareness System</a>
+              </div>-->
+              <ul class="nav navbar-nav">
+                  <li class="active"><a href="#"><i class="fas fa-home"></i></a></li>
+                  <li><a href="#">Profile</a></li>
+                  <li><a href="#">Medical History</a></li>
+              </ul>
+              <ul class="nav navbar-nav navbar-right">
+                <!--              <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>-->
+                <li><a href="#"><i class="fas fa-sign-out-alt"></i> Log out</a></li>
+            </ul>
+        </div>
+    </nav>
+</div>
+</div>
+<div class="container-fluid ">
+    <div class="row content">
+      <div class="col-md-6 col-md-offset-3">
+
+        <form class="form-horizontal" id="login" action="patient_record.html">
+            <h3>Alerts </h3>
+            <div class="panel panel-danger">
+                <div class="panel-heading"> Ebola Alert</div>
+                <div class="panel-body">
+                 <strong>Date:</strong>
+                 <span id="date">
+                    November 19, 2018
+                </span><br>
+                <strong>Symptoms :</strong>
+                <span id="symptoms-list">
+                    Fever, Severe headache, Muscle pain, Weakness, Fatigue, Diarrhea, Vomiting, Abdominal (stomach) pain, Unexplained hemorrhage (bleeding or bruising)
+                </span><br>
+                <strong>Find preventive steps here: </strong>
+                <span class="condition-text" id="preventive-link">
+                    <a href="https://www.canada.ca/en/public-health/services/diseases/ebola/prevention-ebola.html" target="_blank">                      https://www.canada.ca/en/public-health/services/diseases/ebola/prevention-ebola.html</a>
+                </span>                        
+            </div>
+        </div>
+        <hr>
+        <h3>Expired Alerts</h3>
+        <div class="panel panel-warning">
+            <div class="panel-heading"> Flu Season Alert</div>
+            <div class="panel-body">
+             <strong>Date:</strong>
+             <span id="date">
+                September 24, 2018
+            </span><br>
+            <strong>Symptoms :</strong>
+            <span id="symptoms-list">
+             Fever* or feeling feverish/chills, Cough, Sore throat, Runny or stuffy nose
+             Muscle or body aches, Headaches, Fatigue (tiredness), Some people may have vomiting and diarrhea, though this is more common in children than adults.<br> *It’s important to note that not everyone with flu will have a fever.
+         </span><br>
+         <strong>Find preventive steps here: </strong>
+         <span class="condition-text" id="preventive-link">
+            <a href="https://www.cdc.gov/flu/consumer/symptoms.htm" target="_blank">                      https://www.cdc.gov/flu/consumer/symptoms.htm</a>
+        </span>                        
+    </div>
+</div><div class="panel panel-warning">
+    <div class="panel-heading"> Enterovirus D68 Alert</div>
+    <div class="panel-body">
+     <strong>Date:</strong>
+     <span id="date">
+        August 4, 2018
+    </span><br>
+    <strong>Symptoms :</strong>
+    <span id="symptoms-list">
+        Mild symptoms may include runny nose, sneezing, cough, body aches, and muscle aches. Severe symptoms may include wheezing and difficulty breathing.
+    </span><br>
+    <strong>Find preventive steps here: </strong>
+    <span class="condition-text" id="preventive-link">
+        <a href="https://www.cdc.gov/non-polio-enterovirus/about/ev-d68.html">                      https://www.cdc.gov/non-polio-enterovirus/about/ev-d68.html</a>
+    </span>                        
+</div>
+</div>
+<div class="panel panel-warning">
+    <div class="panel-heading"> Hepatitis A  Alert</div>
+    <div class="panel-body">
+     <strong>Date:</strong>
+     <span id="date">
+        July 1, 2018
+    </span><br>
+    <strong>Symptoms :</strong>
+    <span id="symptoms-list">
+        Fever, Fatigue, Loss of appetite, Nausea, Vomiting, Abdominal pain, Dark urine, Diarrhea, Clay-colored stools, Joint pain, Jaundice (yellowing of the skin and eyes)
+    </span><br>
+    <strong>Find preventive steps here: </strong>
+    <span class="condition-text" id="preventive-link">
+        <a href="https://www.cdc.gov/hepatitis/hav/afaq.htm">https://www.cdc.gov/hepatitis/hav/afaq.htm</a>
+    </span>                        
+</div>
+</div>
+
+</form>
+</div>
+
+</div>
+</div>
+<script>
+    window.onscroll = function() {myFunction()};
+
+    var navbar = document.getElementById("navbar");
+    var sticky = navbar.offsetTop;
+    
+
+    function myFunction() {
+
+      if (window.pageYOffset >= sticky) {
+          navbar.classList.add("sticky")
+      } else {
+        navbar.classList.remove("sticky");
+    }
+}
+</script>
+</body>
+</html>
