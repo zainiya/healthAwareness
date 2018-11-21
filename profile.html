@@ -41,7 +41,8 @@
         <form id="signup-form" class="form-horizontal" name="signupForm">
 
 
-          <h4 style="color: #777!important;"><center><i class="fas fa-user-circle" style="font-size: 45px;"></i> <br><br> Zainiya Manjiyani</center></h4>
+          <h4 style="color: #777!important;"><center><i class="fas fa-user-circle" style="font-size: 45px;"></i> <br><br> 
+            <span id="full-name"></span></center></h4>
           <div class="panel-body">
             <div class="form-group">
               <label for="fName" class="control-label col-sm-2">First Name:</label>
@@ -114,21 +115,30 @@
 
     </div>
   </div>
+  <script type="text/javascript" src="js/doctor.js"></script>
   <script>
-    window.onscroll = function() {myFunction()};
 
-    var navbar = document.getElementById("navbar");
-    var sticky = navbar.offsetTop;
-    
+$( document ).ready(function() {
+  console.log( "ready!" );
+  getDoctor();
+  getAddress();
 
-    function myFunction() {
+});
 
-      if (window.pageYOffset >= sticky) {
-        navbar.classList.add("sticky")
-      } else {
-        navbar.classList.remove("sticky");
-      }
-    }
-  </script>
+window.onscroll = function() {myFunction()};
+
+var navbar = document.getElementById("navbar");
+var sticky = navbar.offsetTop;
+
+
+function myFunction() {
+
+  if (window.pageYOffset >= sticky) {
+    navbar.classList.add("sticky")
+  } else {
+    navbar.classList.remove("sticky");
+  }
+}
+</script>
 </body>
 </html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <link rel="stylesheet" type="text/css" href="main.css">
+
+    <!--<script src="./node_modules/web3/dist/web3.min.js"></script>-->
+    <style type="text/css">body {
+        background-color:#F0F0F0;
+        padding: 2em;
+        font-family: 'Raleway','Source Sans Pro', 'Arial';
+    }
+    .container {
+        width: 50%;
+        margin: 0 auto;
+    }
+    label {
+        display:block;
+        margin-bottom:10px;
+    }
+    input {
+        padding:10px;
+        width: 50%;
+        margin-bottom: 1em;
+    }
+    button {
+        margin: 2em 0;
+        padding: 1em 4em;
+        display:block;
+    }
+    #loader {
+        width: 100px;
+        display:none;
+    }
+    #instructor {
+        padding:1em;
+        background-color:#fff;
+        margin: 1em 0;
+    }</style>
+</head>
+<body>
+    <div class="container">
+
+        <h1>Coursetro Instructor</h1>
+        <span id="countIns"></span>
+        <h2 id="instructor"></h2>
+        <span id="insTrans"></span>
+        <label for="emailid" class="col-lg-2 control-label">Email id:</label>
+        <input id="emailid" type="email" >
+
+        <label for="password" class="col-lg-2 control-label">Password</label>
+        <input id="password" type="password">
+
+        <button id="button">Login</button>
+        <button id="getdoc">getdoctor with the address</button>
+        <button id="authDoc">Authenticate the doctor</button>
+        <img id="loader" src="https://loading.io/spinners/double-ring/lg.double-ring-spinner.gif">
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+
+    <script>
+
+        if (typeof web3 !== 'undefined') {
+            web3 = new Web3(web3.currentProvider);
+        } else {
+            // set the provider you want from Web3.providers
+            web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
+        }
+        web3.eth.defaultAccount = web3.eth.accounts[0];
+        var DoctorContract = web3.eth.contract([{"constant": false, "inputs": [{"name": "_address", "type": "address"}, {"name": "_emailid", "type": "string"}, {"name": "_password", "type": "string"} ], "name": "setDoctor", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function"}, {"anonymous": false, "inputs": [{"indexed": false, "name": "_address", "type": "address"}, {"indexed": false, "name": "emailid", "type": "string"}, {"indexed": false, "name": "password", "type": "string"} ], "name": "authDoctor", "type": "event"}, {"constant": true, "inputs": [{"name": "ins", "type": "address"}, {"name": "_emailid", "type": "string"}, {"name": "_password", "type": "string"} ], "name": "authenticateDoctor", "outputs": [{"name": "", "type": "bool"} ], "payable": false, "stateMutability": "view", "type": "function"}, {"constant": true, "inputs": [{"name": "", "type": "uint256"} ], "name": "doctorsAccts", "outputs": [{"name": "", "type": "address"} ], "payable": false, "stateMutability": "view", "type": "function"}, {"constant": true, "inputs": [{"name": "ins", "type": "address"} ], "name": "getDoctor", "outputs": [{"name": "", "type": "string"}, {"name": "", "type": "string"} ], "payable": false, "stateMutability": "view", "type": "function"}, {"constant": true, "inputs": [], "name": "getDoctors", "outputs": [{"name": "", "type": "address[]"} ], "payable": false, "stateMutability": "view", "type": "function"} ]);
+
+        var Doctor = DoctorContract.at('0xe6925ec414f0e13de37ef2bcc324eba4ea84c2da');
+        console.log(Doctor);
+        var authenticatingDoctorEvent = Doctor.authDoctor({},'latest');
+
+        authenticatingDoctorEvent.watch(function(error, result){
+            if (!error)
+            {
+                if (result.blockHash != $("#instrans").html()) 
+                    $("#loader").hide();
+                
+                $("#insTrans").html('Block hash: ' +result.blockHash);
+                $("#instructor").html(result.args.emailid + ' (' + result.args.password + ' years old)');
+            } else {
+                $("#loader").hide();
+                console.log(error);
+            }
+        });
+        console.log(web3.eth.defaultAccount);
+
+        $("#button").click(function() {
+            console.log("button clicked");
+            Doctor.setDoctor(web3.eth.defaultAccount,$("#emailid").val(), $("#password").val(), (err, res) => {
+                if (err) 
+                    $("#loader").hide();
+            });
+        });
+        $("#getdoc").click(function(){
+            console.log(web3.eth.defaultAccount);
+            Doctor.getDoctor(web3.eth.defaultAccount, (err,res)=>{
+               if (err) {
+                console.log("error occured");
+            }else{
+                console.log(res);
+            }
+        });
+        });
+        $("#authDoc").click(function(){
+            console.log(web3.eth.defaultAccount);
+            Doctor.authenticateDoctor(web3.eth.defaultAccount,$("#emailid").val(), $("#password").val(), (err, res) => {
+            if (err){
+                  console.log("error occured");
+              }else{
+                  console.log(res);
+                  if(res==true){
+                     window.location.assign("profile.html");
+                  }
+              }
+                
+        });
+        });
+            
+    </script>
+
+</body>
+</html>

@@ -1,6 +1,5 @@
 var Coursetro;
 var web3;
-
 function initUserConnection() {
   if (typeof web3 !== 'undefined') {
     web3 = new Web3(web3.currentProvider);
@@ -9,8 +8,8 @@ function initUserConnection() {
   }
   web3.eth.defaultAccount = web3.eth.accounts[0];
   var CoursetroContract = web3.eth.contract([{"constant": true, "inputs": [], "name": "getUsers", "outputs": [{"name": "", "type": "address[]"} ], "payable": false, "stateMutability": "view", "type": "function"}, {"constant": true, "inputs": [{"name": "", "type": "uint256"} ], "name": "userAccts", "outputs": [{"name": "", "type": "address"} ], "payable": false, "stateMutability": "view", "type": "function"}, {"constant": false, "inputs": [{"name": "_address", "type": "address"}, {"name": "_fName", "type": "string"}, {"name": "_lName", "type": "string"}, {"name": "_email", "type": "string"}, {"name": "_password", "type": "string"}, {"name": "_street", "type": "string"}, {"name": "_unit", "type": "string"}, {"name": "_city", "type": "string"}, {"name": "_state", "type": "string"}, {"name": "_zipcode", "type": "string"} ], "name": "setUser", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function"}, {"constant": true, "inputs": [{"name": "ins", "type": "address"} ], "name": "getUser", "outputs": [{"name": "", "type": "string"}, {"name": "", "type": "string"}, {"name": "", "type": "string"}, {"name": "", "type": "string"} ], "payable": false, "stateMutability": "view", "type": "function"}, {"constant": true, "inputs": [], "name": "countUsers", "outputs": [{"name": "", "type": "uint256"} ], "payable": false, "stateMutability": "view", "type": "function"} ]);
-  Coursetro = CoursetroContract.at('0xf2e83be7dcdc6aa651e7cbd8f17bc611f88653bc');
-  return JSON.parse('{"API":{"name":"user", "version":"v1"}}');
+  Coursetro = CoursetroContract.at('0x9c7e3ef08d821e077076eff80e398c045f62adfe');
+ return JSON.parse('{"API":{"name":"user", "version":"v1"}}');
 }
 
 function createUser(fname, lname, email, password, street, unit, city, state, zipcode) {

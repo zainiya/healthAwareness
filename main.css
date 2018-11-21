@@ -38,3 +38,7 @@
 .form-horizontal .control-label {
 	text-align: left;
 }
+#loader {
+    width: 100px;
+    display:none;
+}
