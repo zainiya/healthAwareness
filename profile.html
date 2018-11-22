@@ -38,11 +38,13 @@
     <div class="row content">
       <div class="col-md-8 col-md-offset-2">
 
-        <form id="signup-form" class="form-horizontal" name="signupForm">
+        <!--<form id="signup-form" class="form-horizontal" name="signupForm">-->
 
 
           <h4 style="color: #777!important;"><center><i class="fas fa-user-circle" style="font-size: 45px;"></i> <br><br> 
-            <span id="full-name"></span></center></h4>
+            <span id="full-name"></span></center>
+<img id="loader" src="https://loading.io/spinners/double-ring/lg.double-ring-spinner.gif">
+          </h4>
           <div class="panel-body">
             <div class="form-group">
               <label for="fName" class="control-label col-sm-2">First Name:</label>
@@ -57,14 +59,14 @@
             <div class="form-group">
               <label for="sa1" class="control-label col-sm-2">Street Name:</label>
               <div class="col-sm-10">
-                <input type="text" name="sn" id="sa1" placeholder="1000, ABC St" class="form-control" value="2227 Northrop Ave">
+                <input type="text" name="sn" id="streetName" placeholder="1000, ABC St" class="form-control" value="2227 Northrop Ave">
               </div>
             </div>
 
             <div class="form-group">
               <label for="sa2" class="control-label col-sm-2" >Unit/Apt #:</label>
               <div class="col-sm-10">
-                <input type="text" name="unit" id="sa2" placeholder="103" class="form-control" value="14">
+                <input type="text" name="unit" id="unit" placeholder="103" class="form-control" value="14">
               </div>
             </div>
             <div class="form-group">
@@ -106,16 +108,17 @@
               </div>
             </div>   
             <div class="form-group">    
-              <button class="btn btn-warning" style="float: right;margin-right: 5%; margin-top:20px;" onclick="signUp();"><i class="far fa-check-circle"></i> Update</button>
+              <button class="btn btn-warning" style="float: right;margin-right: 5%; margin-top:20px;" id="updatebtn" onclick="updateDoctorProfile()"><i class="far fa-check-circle"></i> Update</button>
             </div>
           </div>
           
-        </form>
+        <!--</form>-->
       </div>
 
     </div>
   </div>
   <script type="text/javascript" src="js/doctor.js"></script>
+  <script type="text/javascript" src="js/custom.js"></script>
   <script>
 
 $( document ).ready(function() {
