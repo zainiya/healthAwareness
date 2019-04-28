@@ -56,3 +56,33 @@ function updateDoctorProfile(){
     updateDoctor($("#fName").val(), $("#lName").val(), $("#email").val(), $("#doctorlic").val(), $("#streetName").val(), $("#unit").val(), $("#city").val(), $("#state").val(), $("#zipCode").val());
     
 }
+
+function addRow(id){
+     var table = document.getElementById(id);
+    var row = table.insertRow(-1);
+    var x = document.getElementById(id).rows.length;
+    x=x-1;
+    var cell1 = row.insertCell(0);
+    cell1.innerHTML = ''+x;
+    cell1 = row.insertCell(1);
+    cell1.innerHTML = '<input type="date" name="date'+x+'" value="2018-11-13" id="date'+x+'">';
+    cell1 = row.insertCell(2);
+    cell1.innerHTML = '<input type="text" name="zipcode'+x+'" id="zipcode'+x+'" placeholder="Enter patient`s zipcode">';
+    cell1 = row.insertCell(3);
+    cell1.innerHTML = '<input type="text" name="disease'+x+'" id="disease'+x+'" placeholder="Enter disease">';
+    cell1 = row.insertCell(4);
+    cell1.innerHTML = '<input type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="danger" name="isdoctor'+x+'" id="isdoctor'+x+'">';
+    cell1 = row.insertCell(5);
+    cell1.innerHTML = '<label class="radio-inline">'+
+                        '<input type="radio" name="svrradio'+x+'" checked>Less</label>'+
+                        '<label class="radio-inline"><input type="radio" name="svrradio'+x+'">Moderate</label>'+
+                        '<label class="radio-inline"><input type="radio" name="svrradio'+x+'">High</label>';
+    cell1 = row.insertCell(6);
+    cell1.innerHTML = '<input type="text" name="sym'+x+'">';
+    var cell1 = row.insertCell(7);
+    cell1.innerHTML = '<input type="text" name="pre'+x+'">';
+    
+    
+
+    
+}
